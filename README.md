@@ -5,6 +5,8 @@ An automation tool for recording songs out of iRealPro
 
 ## Setup
 
+Create an python environment with python 3.8 or lower
+
 This project uses a forked version of pyaudio to record the system audio via loopback.
 Download and install the .msi from https://github.com/intxcc/pyaudio_portaudio/releases
 
