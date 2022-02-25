@@ -12,7 +12,6 @@ from mss import mss, tools
 def check_playing():
     x_coord = 1344
     y_coord = 980
-    # screenshot = {"top": x_coord, "left": y_coord, "width": x_coord + 2, "height": y_coord + 2}
     screenshot = (x_coord, y_coord, x_coord + 2, y_coord + 2)
     middle = constants.PLAY
     output = "output.png"
