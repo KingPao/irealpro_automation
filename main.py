@@ -6,9 +6,27 @@ import csv
 import keyboard
 import pyaudio
 import wave
+from mss import mss, tools
 
 
-# import mod_pyaudio.pyaudio as pya
+def check_playing():
+    x_coord = 1344
+    y_coord = 980
+    # screenshot = {"top": x_coord, "left": y_coord, "width": x_coord + 2, "height": y_coord + 2}
+    screenshot = (x_coord, y_coord, x_coord + 2, y_coord + 2)
+    middle = constants.PLAY
+    output = "output.png"
+
+    with mss() as sct:
+        img = sct.grab(screenshot)
+        new_rgb_values = (img.pixel(0, 0)[0], img.pixel(0, 0)[1], img.pixel(0, 0)[2])
+
+        if new_rgb_values == constants.LIGHT_BLUE_RGB:
+            return False
+
+    return True
+    # tools.to_png(img.rgb, img.size, output=output)
+    # print(output)
 
 
 def search_song():
@@ -42,11 +60,12 @@ def control_peripherals(song_name):
     mouse.click(Button.left, 1)
     print("Click on Play Button")
 
-    handle_recording(song_name)
-
+    time.sleep(1)
     mouse.position = constants.PLAY
     mouse.click(Button.left, 1)
-    print("Click on Play Button")
+    print("Click on Play Button to insert view")
+
+    handle_recording(song_name)
 
     time.sleep(0.5)
     mouse.position = constants.EXIT_SEARCH
@@ -80,9 +99,12 @@ def handle_recording(filename):
     frames = []  # Initialize array to store frames
 
     # Store data in chunks for 3 seconds
-    for i in range(0, int(rate / chunk * record_seconds)):
+    # for i in range(0, int(rate / chunk * record_seconds)):
+    playing = True
+    while playing:
         data = stream.read(chunk)
         frames.append(data)
+        playing = check_playing()
 
     # Stop and close the Stream and PyAudio
     stream.stop_stream()
@@ -116,3 +138,4 @@ if __name__ == '__main__':
     search_song()
     # list_devices()
     # handle_recording('test_it.wav')
+    # check_playing()
