@@ -37,39 +37,26 @@ def search_song():
             control_peripherals(''.join(song_name))
 
 
+def mouse_controller(mouse, position, text):
+    mouse.position = position
+    mouse.click(Button.left, 1)
+    print(text)
+
+
 def control_peripherals(song_name):
     mouse = Controller()
-    mouse.position = constants.SONGS
-    mouse.click(Button.left, 1)
-    print("Click on Songs")
-
-    mouse.position = constants.SEARCH
-    mouse.click(Button.left, 1)
-    print("Click on Search")
-
+    mouse_controller(mouse, constants.SONGS, "Click on Songs")
+    mouse_controller(mouse, constants.SEARCH, "Click on Search")
     keyboard.write(song_name, delay=0.15)
     print("Search for ", song_name)
-
-    mouse.position = constants.FIRST_ENTRY
-    mouse.click(Button.left, 1)
-    print("Click on First Entry")
-
+    mouse_controller(mouse, constants.FIRST_ENTRY, "Click on First Entry")
     time.sleep(0.5)
-    mouse.position = constants.PLAY
-    mouse.click(Button.left, 1)
-    print("Click on Play Button")
-
-    time.sleep(1)
-    mouse.position = constants.PLAY
-    mouse.click(Button.left, 1)
-    print("Click on Play Button to insert view")
-
+    mouse_controller(mouse, constants.PLAY, "Click on Play Button")
+    time.sleep(1.5)
+    mouse_controller(mouse, constants.PLAY, "Click on Play Button to insert view")
     handle_recording(song_name)
-
     time.sleep(0.5)
-    mouse.position = constants.EXIT_SEARCH
-    mouse.click(Button.left, 1)
-    print("Click on Exit Button")
+    mouse_controller(mouse, constants.EXIT_SEARCH, "Click on Exit Button")
 
 
 def handle_recording(filename):
