@@ -54,6 +54,9 @@ After finding the loopback device follew these steps:
 7. Comment list_devices()
 8. Run search_song()
 
+**Be cautious, every new/plugged in device (webcam, microphone) will change the device indices.  
+This could result in a new setup of the loopback device.**
+
 ### Alternative way
 Try to find loopback devices by hand without Audacity.  
 1. Set `dev_index =` to every possible index
