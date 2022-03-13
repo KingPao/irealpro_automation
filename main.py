@@ -63,7 +63,7 @@ def handle_recording(filename):
     chunk = 1024
     audio_format = pyaudio.paInt16
     channels = 2
-    rate = 44100
+    rate = 44100 #22050
     record_seconds = 5
 
     p = pyaudio.PyAudio()
@@ -121,7 +121,7 @@ def list_devices():
 
 
 if __name__ == '__main__':
-    search_song()
-    # list_devices()
+    #search_song()
+    list_devices()
     # handle_recording('test_it.wav')
     # check_playing()
