@@ -47,9 +47,14 @@ def control_peripherals(song_name):
     mouse = Controller()
     mouse_controller(mouse, constants.SONGS, "Click on Songs")
     mouse_controller(mouse, constants.SEARCH, "Click on Search")
+    time.sleep(0.5)
     keyboard.write(song_name, delay=0.15)
     print("Search for ", song_name)
     mouse_controller(mouse, constants.FIRST_ENTRY, "Click on First Entry")
+    time.sleep(0.5)
+    mouse_controller(mouse, constants.REPEAT, "Click on Minus Repeat Button")
+    time.sleep(0.5)
+    mouse_controller(mouse, constants.REPEAT, "Click on Minus Repeat Button")
     time.sleep(0.5)
     mouse_controller(mouse, constants.PLAY, "Click on Play Button")
     time.sleep(1.5)
@@ -121,7 +126,7 @@ def list_devices():
 
 
 if __name__ == '__main__':
-    #search_song()
-    list_devices()
+    search_song()
+    #list_devices()
     # handle_recording('test_it.wav')
     # check_playing()
