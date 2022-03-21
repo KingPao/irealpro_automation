@@ -14,6 +14,7 @@ Clone the repository and create a conda environment with:
 ### Set up the forked pyaudio
 This project uses a forked version of pyaudio to record the system audio via loopback.
 Download and install the .msi from [here](https://github.com/intxcc/pyaudio_portaudio/releases).
+Since it's an installer, choose a proper installation directory. 
 
 After the installation 3 files are created:
 1. pyaudio.py
@@ -29,7 +30,7 @@ and replace the existing pyaudio files with the new ones.
 Since this script works with strict monitor coordinates a 2 monitor setup is definitely an advantage.  
 To get this working you need to set the resolution of your monitor to **1920x1080**.
 
-1. Put Bluestacks with iRealPro open on the right screen
+1. Put Fullscreen Bluestacks with iRealPro open on the right screen
 2. Start the script
 3. You should see the mouse moving and operating Bluestacks  
 4. Do not move your mouse or keyboard and wait for the program to finish.
